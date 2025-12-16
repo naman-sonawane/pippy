@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FCF7FF;
+  --foreground: #3a061c;
+  --purple-light: #ead7f5;
+  --white: #ffffff;
+  --yellow: #ffe6a8;
+  --gray: #c0c0c0;
+  --olive: #a29166;
+  --pink: #db8cb6;
+  --pink-pale: #ffecf6;
+  --yellow-pale: #fff4d8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: 'Montserrat', sans-serif;
+  --font-script: 'Petit Formal Script', cursive;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', var(--font-montserrat), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+
+* {
+  text-transform: lowercase;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: lowercase;
+  font-weight: 600;
+}
+
+input, button, textarea {
+  text-transform: lowercase;
+}
+
+input::placeholder {
+  text-transform: lowercase;
+}
+
+.petit-formal-script-regular {
+  font-family: "Petit Formal Script", cursive;
+  font-weight: 400;
+  font-style: normal;
 }

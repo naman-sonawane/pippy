@@ -1,0 +1,433 @@
+Before we get started...
+What would you choose?
+Attention grabber: Imagine it’s the year 2040. Your city announces that a new energy plant will be built two kilometres from your house. They give you two options and you have to choose.
+
+STAN HONDA/AFP/Getty Images
+David Parker/Science Photo Library
+A
+B
+A proven energy system that has powered cities for decades, but creates long-lasting radioactive waste.
+B: A new advanced energy system that produces almost no long-term waste, but has never been used for large-scale electricity before.
+As we go through this lesson, I want you to think about which option you trust more: proven experience or future potential
+
+BREAKING News: The Future of Nuclear Energy
+Aryan, Kendall, Rajdip, Naman
+
+Fusion vs. Fission
+What is it?
+
+Nuclear Fission
+noun • [noo-klee-ur-fi-shn]
+
+Fission happens when a heavy nucleus splits into two smaller nuclei
+This reaction releases energy and 2-3 neutrons
+A controlled chain reaction allows reactors to generate electricity
+Fission is used in nuclear power plants around the world today
+
+Most common fuel: U-235
+You can think about it how they are almost like opposites, where fusion joins 2 light nuclei, and fission breaks apart.
+• These neutrons can hit other U 235 atoms and keep the chain reaction going
+• This chain reaction is what makes nuclear power plants work
+
+1.
+Splitting the nucleus releases a large amount of energy
+2.
+Most energy appears as kinetic energy of the products
+3.
+This kinetic energy becomes heat inside the reactor
+Nuclear Fission
+Heat is used to boil water and spin turbines.
+Why Fission Releases Energy
+
+Slow vs. Fast
+Slow Neutrons
+Fast Neutrons
+Pressurized or boiling water slows down fast neutrons so they become usable.
+Cause most fission in power reactors
+Come directly from fission and move quickly
+U 235 is thermally fissile and naturally occurring.
+Nuclear Fission
+
+ 
+• Many possible fission products exist
+• Reaction equations always conserve total protons + neutrons
+• Products include smaller nuclei plus energy
+• Smaller nuclei further undergo radioactive decay until stability
+• Most energy becomes heat used for electricity
+(World Nuclear Association, 2025)
+Nuclear Fission
+
+Nuclear
+Fusion
+
+Nuclear Fusion
+noun • [noo-klee-ur-fyoo-zhn]
+
+• Fusion combines two light nuclei into a heavier nucleus.
+• Releases massive energy (powers the Sun)
+• Considered one of the most promising clean energy sources.
+• New breakthroughs such as high-field compact reactors at MIT show progress toward stable, net-positive fusion.
+
+Experimental!!
+
+
+• Requires extremely high temperatures and pressures to overcome repulsion between nuclei.
+• Tokamaks use magnetic fields to confine hot plasma
+• Laser fusion uses high-power lasers to compress fuel
+• REBCO superconducting magnets handle intense heat + radiation while keeping plasma stable
+(Reis et al., 2025)
+
+Most studied reaction
+D + T → He + n + Energy 
+Nuclear Fusion
+
+1.
+When light nuclei fuse, the mass of the final nucleus is slightly lower.
+2.
+The missing mass (neutrons + heat) becomes energy.
+3.
+Recreated on Earth using magnets or lasers.
+Nuclear Fusion
+E = mc2
+Why Fusion Releases Energy
+
+Technology Essentials
+Tokamaks
+• Donut-shaped reactor
+• Strong magnetic fields confine plasma
+Laser Fusion
+• Lasers rapidly compress fuel pellets
+Advanced Materials
+• REBCO superconductors allow stronger magnetic fields
+• Must survive intense neutron radiation and heat
+(Reis et al., 2025)
+
+Comparing
+Impacts
+
+Impacts on Society
+Radiation & Nuclear Waste
+• Fission creates radioactive products, including long lived fission products (LLFPs).
+• LLFPs can harm human health in high doses.
+• A management method is transmutation, where waste is allowed to decay and then used in fast reactors to reduce its lifetime.
+ 
+(World Nuclear Association, 2024; Kailas et al., 2015)
+Energy Supply & Benefits
+• Nuclear energy provides about 15% of Canada’s electricity.
+• Oakville gets almost 50% of its power from nuclear.
+• Canadian Nuclear Safety Commission (CNSC) enforces strict safety rules at all plants.
+• New nuclear projects are being explored as clean energy options.
+ 
+      (Oakville Hydro, 2024; Canadian Nuclear Safety Commission, 2025)
+
+Nuclear Fission
+
+Impacts on Society
+Economic & Technological Impact
+• Could supply near-unlimited, stable, carbon-free power.
+• May reduce electricity costs and global reliance on fossil fuels.
+(HowStuffWorks, 2021)
+• Fusion development creates thousands of high-tech jobs and pushes innovation in magnet design, plasma physics, and materials.
+(World Economic Forum, 2025)
+Global Collaboration & Ethics
+• Global projects like ITER unite many countries in shared scientific and climate goals.
+(World Economic Forum, 2025)
+
+• Ethical frameworks needed to ensure equitable access to fusion energy worldwide.
+(Scientific American, 2025)
+Nuclear Fusion
+International Thermonuclear Experimental Reactor
+
+Climate & Air Quality
+Mining & Land Impact
+• Nuclear power directly releases zero CO2 during operation.
+• Prevents about 470 million metric tons of CO2 globally each year.
+• Also reduced NOx and smog compared to fossil fuels
+
+(United Nations Economic Commission for Europe, n.d.; Nuclear Energy Institute, n.d.)
+
+• Uranium mining and enrichment are required for nuclear fuel.
+• Some mines become abandoned (over 4,000 abandoned uranium mines exist in the U.S.)
+• These can contaminate nearby water with radioactive material, which can harm ecosystems and increase risks like bone cancer.
+ 
+(Stanford Energy, 2025; U.S. Environmental Protection Agency, 2025)
+
+Environmental Impact
+Nuclear Fission
+Mention that what comes out of the cooling towers is actually water steam, not CO2
+
+Nuclear Fission
+(United Nations Economic Commission for Europe, n.d.) (Nuclear Energy Institute, n.d.)
+
+Material Requirements
+Radioactive Waste
+• Fusion reactors need rare, specialized materials (superconductors, special alloys).
+• Mining + manufacturing these materials can cause emissions and ecosystem disruption.
+(EBSCO, 2024; National Academy of Engineering, 2024)
+• Fusion produces no long-lived high-level waste like fission.
+• Reactor components become activated by neutron exposure → need storage for 50–100 years, then decay to safe levels.
+(IPP, 2022; ITER, 2024)
+• Recycling of activated materials is being developed but faces regulatory + public acceptance challenges.
+(EBSCO, 2024)
+Environmental Impact
+Nuclear Fusion
+Mention that what comes out of the cooling towers is actually water steam, not CO2
+
+ACTIVITY Time
+
+References
+[References here]
+
+01
+02
+03
+04
+THE MODERN ATOMIC THEORY
+You can describe the topic of the section here
+THE STRUCTURE OF THE ATOM
+You can describe the topic of the section here
+PERIODIC TABLE HISTORY
+You can describe the topic of the section here
+PERIODIC TRENDS
+You can describe the topic of the section here
+TABLE OF CONTENTS
+
+CARBON
+Mercury is the closest planet to the Sun and the smallest one in the Solar System
+OXYGEN
+Earth is the third planet from the Sun and the only one that harbors life in the Solar System
+NON METAL
+NITROGEN
+Venus has a beautiful name and is the second planet from the Sun. It’s terribly hot
+FLUORINE
+Mars is a cold place. It's full of iron oxide dust, which gives the planet its reddish cast
+
+MAGNESIUM
+Venus is the second planet from the Sun
+BARIUM
+Jupiter is the biggest planet in the Solar System
+ALKALINE EARTH METAL
+STRONTIUM
+Despite being red, Mars is a cold place
+CALCIUM
+Saturn is a gas giant and has several rings
+
+TRANSITION METALS
+SCANDIUM
+Mercury is the closest planet to the Sun
+TITANIUM
+Venus is the second planet from the Sun
+YTTRIUM
+Jupiter is the biggest planet of them all
+ZIRCONIUM
+Saturn is composed of hydrogen and helium
+VANADIUM
+Despite being red, Mars is actually a very cold place
+NIOBIUM
+Neptune is the farthest planet from the Sun
+
+02
+THE STRUCTURE OF THE ATOM
+You can enter a subtitle here if you need it
+
+THE STRUCTURE OF THE ATOM: CARBON ATOM
+ELECTRON
+Mercury is the closest planet to the Sun
+PROTON
+Venus is the second planet from the sun
+NEUTRON
+Despite being red, Mars is a cold place
+6 protons
++
+6 neutrons
+
+AWESOME WORDS
+
+A PICTURE IS WORTH A THOUSAND WORDS
+
+TEXT AND PHOTO
+You can give a brief description of the topic you want to talk about here. For example, if you want to talk about Mercury, you can say that it’s the smallest planet in the entire Solar System
+
+TEXT AND PHOTO 2
+You can give a brief description of the topic you want to talk about here. For example, if you want to talk about Mercury, you can say that it’s the smallest planet in the entire Solar System
+
+TEXT AND PHOTO 3
+You can give a brief description of the topic you want to talk about here. For example, if you want to talk about Mercury, you can say that it’s the smallest planet in the entire Solar System
+
+—SOMEONE FAMOUS
+“This is a quote, words full of wisdom that someone important said and can make the reader get inspired.”
+
+03
+PERIODIC TABLE HISTORY
+You can enter a subtitle here if you need it
+
+123,456,789
+Big numbers catch your audience’s attention
+
+10.811 u
+It’s the atomic mass of Boron
+22.990 u  
+It’s the atomic mass of Sodium
+51.996 u
+It’s the atomic mass of Chromium
+
+VIDEO TUTORIAL
+You can replace the image on the screen with your own work. Just right-click on it and select “Replace image”
+
+TABLET SCREENSHOT
+You can replace the image on the screen with your own work. Just right-click on it and select “Replace image”
+
+PHONE SCREENSHOT
+You can replace the image on the screen with your own work. Just right-click on it and select “Replace image”
+
+THIS IS A GRAPH
+Follow the link in the graph to modify its data and then paste the new one here. For more info, click here
+MERCURY
+It’s the closest planet to the Sun
+VENUS
+It’s the second planet from the Sun
+MARS
+Despite being red, Mars is cold
+JUPITER
+It’s the biggest planet of them all
+
+ACTINIDES ELEMENTS
+Name
+ACTINIUM
+THORIUM
+PROTACTINIUM
+URANIUM
+Atomic number
+89
+90
+91
+92
+Atomic mass
+227.028 u
+232.038 u
+231.036 u
+238.029 u
+Ionization energy
+5.17 eV
+6.08 eV
+5.89 eV
+6.194 eV
+
+ELEMENT INFORMATION
+55.847 u 
+7.874 g/cm³ 
+3,134o
+Fe
+26
+Iron
+1,811o
+Atomic weight
+Density
+Boiling point
+Atomic number
+Symbol
+Melting point
+Name
+
+BEST CHEMISTRY SCHOOLS
+MERCURY
+It’s the closest planet to the Sun
+VENUS
+It’s the second planet from the Sun
+MARS
+Despite being red, Mars is cold
+JUPITER
+It’s the biggest planet of them all
+
+INFOGRAPHIC DIAGRAM
+MERCURY
+It’s the closest planet to the Sun
+VENUS
+It’s the 2nd planet from the Sun
+JUPITER
+It’s the 5th planet to the Sun
+MARS
+It’s the 4th planet from the Sun
+SATURN
+It’s the 6th planet to the Sun
+NEPTUNE
+Neptune is far away from Earth
+PERIODIC TABLE ELEMENTS
+
+PERIODIC TABLE: HISTORY AND ARRANGEMENT
+MERCURY
+It’s the closest planet to the Sun
+VENUS
+Venus has a beautiful name
+JUPITER
+Jupiter is the biggest planet
+MARS
+Mars is actually a very cold place
+SATURN
+Saturn has several rings
+First
+Second
+Third
+Fourth
+
+THIS IS ANOTHER GRAPH
+Follow the link in the graph to modify its data and then paste the new one here. For more info, click here
+MERCURY
+It’s the closest planet to the Sun
+VENUS
+It’s the second planet from the Sun
+MARS
+Despite being red, Mars is cold
+JUPITER
+It’s the biggest planet of them all
+30%
+10%
+20%
+40%
+
+THANKS
+Do you have any questions?
+youremail@freepik.com 
++91  620 421 838 
+yourcompany.com
+Please keep this slide for attribution
+
+ICON PACK: PERIODIC TABLE
+
+ALTERNATIVE RESOURCES
+Here’s an assortment of alternative resources whose style fits the one of this template: 
+
+Photos
+Man in lab doing experiments
+Still life arrangement of test tubes
+Senior woman teaching english
+Teacher standing and holding tablet
+Close up scientist wearing face mask
+Children learning more about chemistry in class
+Scientist working with chemical substances
+Girls learning more about chemistry in class
+Chemistry class elements with copy space
+Still life assortment of test tubes
+
+
+
+
+
+RESOURCES
+Did you like the resources on this template? Get them for free at our other websites:
+Photos
+
+Top view world science day arrangement
+Front view science elements with chemicals assortment
+Male researcher in the biotechnology laboratory with tablet
+Side view of female scientist holding lab substance
+Medium shot woman with chemical substance
+Pretty girl learning more about chemistry in class
+Top view science elements
+High angle science elements composition
+High angle science elements with chemicals composition
+High angle science elements with chemicals assortment
+
+Icons
+
+Icon pack: Periodic table
