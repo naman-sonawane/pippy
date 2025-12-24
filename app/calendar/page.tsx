@@ -13,6 +13,8 @@ interface TimeLog {
   activity: string | null;
 }
 
+type ViewMode = 'calendar' | 'list';
+
 export default function CalendarPage() {
   const router = useRouter();
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -20,21 +22,31 @@ export default function CalendarPage() {
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [viewMode, setViewMode] = useState<ViewMode>('calendar');
+  const [startDateRange, setStartDateRange] = useState(() => {
+    const date = new Date();
+    date.setMonth(date.getMonth() - 1);
+    return date.toISOString().split('T')[0];
+  });
+  const [endDateRange, setEndDateRange] = useState(() => {
+    const date = new Date();
+    return date.toISOString().split('T')[0];
+  });
 
   useEffect(() => {
     fetchLogs();
-  }, [currentDate]);
+  }, [currentDate, startDateRange, endDateRange]);
 
   const fetchLogs = async () => {
     setLoading(true);
     try {
-      const year = currentDate.getFullYear();
-      const month = currentDate.getMonth();
-      const startDate = new Date(year, month, 1);
-      const endDate = new Date(year, month + 1, 0, 23, 59, 59);
+      const start = new Date(startDateRange);
+      start.setHours(0, 0, 0, 0);
+      const end = new Date(endDateRange);
+      end.setHours(23, 59, 59, 999);
 
       const response = await fetch(
-        `/api/time/get?startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}`
+        `/api/time/get?startDate=${start.toISOString()}&endDate=${end.toISOString()}`
       );
       const data = await response.json();
       setLogs(data.logs || []);
@@ -102,11 +114,25 @@ export default function CalendarPage() {
   };
 
   const days = getDaysInMonth(currentDate);
-  const totalMonthHours = logs.reduce((sum, log) => sum + log.hours, 0);
+  const totalRangeHours = logs.reduce((sum, log) => sum + log.hours, 0);
+
+  // Calculate activity totals for list view
+  const activityTotals = logs.reduce((acc, log) => {
+    const activity = log.activity || 'uncategorized';
+    if (!acc[activity]) {
+      acc[activity] = 0;
+    }
+    acc[activity] += log.hours;
+    return acc;
+  }, {} as Record<string, number>);
+
+  const sortedActivities = Object.entries(activityTotals)
+    .map(([activity, hours]) => ({ activity, hours }))
+    .sort((a, b) => b.hours - a.hours);
 
   return (
     <AuthGuard>
-      <div className="min-h-screen bg-[#FCF7FF] p-4 pb-8 flex items-center justify-center relative">
+      <div className="min-h-screen bg-[#FCF7FF] p-2 pb-6 flex items-center justify-center relative">
         {/* Spinning background decoration - cut off at bottom */}
         <motion.div
           animate={{ rotate: 360 }}
@@ -124,155 +150,286 @@ export default function CalendarPage() {
           />
         </motion.div>
 
-        <div className="relative max-w-md mx-auto z-10">
-
-
-  {/* Existing content */}
-
+        <div className="relative max-w-md mx-auto z-10 w-full">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center justify-between mb-6"
+            className="flex items-center justify-between mb-3"
           >
             <button
               onClick={() => router.push('/')}
-              className="text-[#3a061c] text-sm opacity-70 hover:opacity-100"
+              className="text-[#3a061c] text-[10px] opacity-70 hover:opacity-100"
             >
               ← back
             </button>
-            <h1 className="text-xl font-semibold text-[#3a061c]">
+            <h1 className="text-sm font-semibold text-[#3a061c]">
               {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
             </h1>
             <div className="w-12"></div>
           </motion.div>
 
-          {/* Month Navigation */}
+          {/* Date Range Picker */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex items-center justify-between mb-6"
+            className="bg-white/80 backdrop-blur-sm rounded-xl p-2 mb-3 shadow-sm"
           >
-            <motion.button
-              onClick={goToPreviousMonth}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-3 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm"
-            >
-              <svg
-                className="w-6 h-6 text-[#3a061c]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </motion.button>
+            <div className="flex items-center gap-2 mb-2">
+              <label className="text-[9px] text-[#a29166] font-medium flex-1">
+                start date
+              </label>
+              <input
+                type="date"
+                value={startDateRange}
+                onChange={(e) => setStartDateRange(e.target.value)}
+                className="flex-1 text-[10px] px-2 py-1 rounded-lg border border-[#a29166]/30 bg-white/60 text-[#3a061c] focus:outline-none focus:ring-1 focus:ring-[#a29166]"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <label className="text-[9px] text-[#a29166] font-medium flex-1">
+                end date
+              </label>
+              <input
+                type="date"
+                value={endDateRange}
+                onChange={(e) => setEndDateRange(e.target.value)}
+                className="flex-1 text-[10px] px-2 py-1 rounded-lg border border-[#a29166]/30 bg-white/60 text-[#3a061c] focus:outline-none focus:ring-1 focus:ring-[#a29166]"
+              />
+            </div>
+          </motion.div>
 
+          {/* View Toggle and Total */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex items-center justify-between mb-3"
+          >
+            <div className="flex gap-1 bg-white/80 backdrop-blur-sm rounded-lg p-1 shadow-sm">
+              <motion.button
+                onClick={() => setViewMode('calendar')}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-3 py-1 rounded-md text-[10px] font-medium transition-colors ${
+                  viewMode === 'calendar'
+                    ? 'bg-[#fff4d8] text-[#3a061c]'
+                    : 'text-[#a29166] hover:text-[#3a061c]'
+                }`}
+              >
+                calendar
+              </motion.button>
+              <motion.button
+                onClick={() => setViewMode('list')}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-3 py-1 rounded-md text-[10px] font-medium transition-colors ${
+                  viewMode === 'list'
+                    ? 'bg-[#fff4d8] text-[#3a061c]'
+                    : 'text-[#a29166] hover:text-[#3a061c]'
+                }`}
+              >
+                list
+              </motion.button>
+            </div>
             <div className="text-center">
-              <p className="text-[#a29166] text-xs mb-1">total this month</p>
-              <p className="text-2xl font-semibold text-[#3a061c]">
-                {Math.round(totalMonthHours * 10) / 10} hrs
+              <p className="text-[#a29166] text-[9px] mb-0.5">total</p>
+              <p className="text-base font-semibold text-[#3a061c]">
+                {Math.round(totalRangeHours * 10) / 10} hrs
               </p>
             </div>
+          </motion.div>
 
-            <motion.button
-              onClick={goToNextMonth}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-3 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm"
-            >
-              <svg
-                className="w-6 h-6 text-[#3a061c]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+          {/* Calendar View */}
+          {viewMode === 'calendar' && (
+            <>
+              {/* Month Navigation */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="flex items-center justify-between mb-3"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </motion.button>
-          </motion.div>
-
-          {/* Calendar Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-lg"
-          >
-            {/* Beaver Image */} <img src="/beaver.png" alt="Beaver" className="w-12 absolute -top-11 left-1/3 -translate-x-10" />
-            {/* Day Headers */}
-            <div className="grid grid-cols-7 gap-2 mb-4">
-              {dayNames.map((day) => (
-                <div
-                  key={day}
-                  className="text-center text-xs text-[#a29166] font-medium"
+                <motion.button
+                  onClick={goToPreviousMonth}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="p-1.5 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm"
                 >
-                  {day}
+                  <svg
+                    className="w-4 h-4 text-[#3a061c]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </motion.button>
+
+                <div className="text-center">
+                  <p className="text-[#a29166] text-[9px] mb-0.5">this month</p>
+                  <p className="text-sm font-semibold text-[#3a061c]">
+                    {Math.round(
+                      logs
+                        .filter((log) => {
+                          const logDate = new Date(log.date);
+                          return (
+                            logDate.getMonth() === currentDate.getMonth() &&
+                            logDate.getFullYear() === currentDate.getFullYear()
+                          );
+                        })
+                        .reduce((sum, log) => sum + log.hours, 0) *
+                        10
+                    ) / 10}{' '}
+                    hrs
+                  </p>
                 </div>
-              ))}
-            </div>
 
-            {/* Calendar Days */}
-            {loading ? (
-              <div className="text-center py-8 text-[#c0c0c0]">loading...</div>
-            ) : (
-              <div className="grid grid-cols-7 gap-2">
-                {days.map((day, index) => {
-                  if (!day) {
-                    return <div key={`empty-${index}`} className="aspect-square" />;
-                  }
+                <motion.button
+                  onClick={goToNextMonth}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="p-1.5 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm"
+                >
+                  <svg
+                    className="w-4 h-4 text-[#3a061c]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </motion.button>
+              </motion.div>
 
-                  const hours = getHoursForDate(day);
-                  const isToday =
-                    day.toDateString() === new Date().toDateString();
-                  const hasHours = hours > 0;
-
-                  return (
-                    <motion.button
-                      key={day.toISOString()}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.01 }}
-                      onClick={() => handleDayClick(day)}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`aspect-square rounded-xl flex flex-col items-center justify-center p-1 cursor-pointer ${
-                        isToday
-                          ? 'bg-linear-to-br from-[#FFBBDF] to-[#EAD7F5]'
-                          : hasHours
-                          ? 'bg-[#fff4d8]'
-                          : 'bg-white/60'
-                      }`}
+              {/* Calendar Grid */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="bg-white/80 backdrop-blur-sm rounded-2xl p-3 shadow-lg relative"
+              >
+                {/* Beaver Image */}
+                <img
+                  src="/beaver.png"
+                  alt="Beaver"
+                  className="w-8 absolute -top-8 left-1/3 -translate-x-8"
+                />
+                {/* Day Headers */}
+                <div className="grid grid-cols-7 gap-1 mb-2">
+                  {dayNames.map((day) => (
+                    <div
+                      key={day}
+                      className="text-center text-[9px] text-[#a29166] font-medium"
                     >
-                      <span
-                        className={`text-xs font-medium ${
-                          isToday ? 'text-[#3a061c]' : 'text-[#a29166]'
-                        }`}
-                      >
-                        {day.getDate()}
+                      {day}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Calendar Days */}
+                {loading ? (
+                  <div className="text-center py-6 text-[#c0c0c0] text-[10px]">
+                    loading...
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-7 gap-1">
+                    {days.map((day, index) => {
+                      if (!day) {
+                        return (
+                          <div key={`empty-${index}`} className="aspect-square" />
+                        );
+                      }
+
+                      const hours = getHoursForDate(day);
+                      const isToday =
+                        day.toDateString() === new Date().toDateString();
+                      const hasHours = hours > 0;
+
+                      return (
+                        <motion.button
+                          key={day.toISOString()}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: index * 0.01 }}
+                          onClick={() => handleDayClick(day)}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`aspect-square rounded-lg flex flex-col items-center justify-center p-0.5 cursor-pointer ${
+                            isToday
+                              ? 'bg-linear-to-br from-[#FFBBDF] to-[#EAD7F5]'
+                              : hasHours
+                              ? 'bg-[#fff4d8]'
+                              : 'bg-white/60'
+                          }`}
+                        >
+                          <span
+                            className={`text-[9px] font-medium ${
+                              isToday ? 'text-[#3a061c]' : 'text-[#a29166]'
+                            }`}
+                          >
+                            {day.getDate()}
+                          </span>
+                          {hasHours && (
+                            <span className="text-[8px] text-[#3a061c] font-medium mt-0.5">
+                              {Math.round(hours * 10) / 10}h
+                            </span>
+                          )}
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                )}
+              </motion.div>
+            </>
+          )}
+
+          {/* List View */}
+          {viewMode === 'list' && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="bg-white/80 backdrop-blur-sm rounded-2xl p-3 shadow-lg"
+            >
+              {loading ? (
+                <div className="text-center py-6 text-[#c0c0c0] text-[10px]">
+                  loading...
+                </div>
+              ) : sortedActivities.length === 0 ? (
+                <div className="text-center py-6 text-[#c0c0c0] text-[10px]">
+                  no activities found
+                </div>
+              ) : (
+                <div className="space-y-1.5">
+                  {sortedActivities.map((item, index) => (
+                    <motion.div
+                      key={item.activity}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      className="flex items-center justify-between p-2 bg-white/60 rounded-lg"
+                    >
+                      <span className="text-[10px] font-medium text-[#3a061c]">
+                        {item.activity}
                       </span>
-                      {hasHours && (
-                        <span className="text-[10px] text-[#3a061c] font-medium mt-0.5">
-                          {Math.round(hours * 10) / 10}h
-                        </span>
-                      )}
-                    </motion.button>
-                  );
-                })}
-              </div>
-            )}
-          </motion.div>
+                      <span className="text-[10px] font-semibold text-[#3a061c]">
+                        {Math.round(item.hours * 10) / 10} hrs
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          )}
         </div>
 
         {/* Day Details Modal */}
