@@ -118,46 +118,46 @@ export default function Home() {
 
   return (
     <AuthGuard>
-      <div className="h-screen bg-[#FCF7FF] p-6 pb-12 relative flex flex-col overflow-hidden">
-        <div className="max-w-md mx-auto space-y-6 relative z-10 flex-1 w-full">
+      <div className="h-screen bg-[#FCF7FF] p-2 pb-10 relative flex flex-col overflow-hidden">
+        <div className="max-w-md mx-auto space-y-3 relative z-10 flex-1 w-full">
           {/* Header Card */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-[#FFECF6] rounded-3xl p-8 relative overflow-hidden shadow-lg"
+            className="bg-[#FFECF6] rounded-2xl p-4 relative overflow-hidden shadow-lg"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-pink-400/20 rounded-full -mr-12 -mt-12 blur-2xl"></div>
+            <div className="absolute top-0 right-0 w-16 h-16 bg-pink-400/20 rounded-full -mr-8 -mt-8 blur-2xl"></div>
             <div className="relative z-10">
-              <div className="flex items-start justify-between mb-6">
+              <div className="flex items-start justify-between mb-3">
                 <Image
                   src="/logo.svg"
                   alt="logo"
                   width={40}
                   height={40}
-                  className="w-12 h-12"
+                  className="w-8 h-8"
                 />
                 <button
                   onClick={handleLogout}
-                  className="text-[#3a061c] text-base opacity-70 hover:opacity-100"
+                  className="text-[#3a061c] text-[10px] opacity-70 hover:opacity-100"
                 >
                   logout
                 </button>
               </div>
-              <h1 className="text-4xl font-bold text-[#3a061c] mb-2">
+              <h1 className="text-xl font-bold text-[#3a061c] mb-1">
                 hello, {username}!
               </h1>
-              <p className="text-[#3a061c] text-base opacity-80 mb-4">
+              <p className="text-[#3a061c] text-[10px] opacity-80 mb-2">
                 welcome back 😛
               </p>
-              <p className="petit-formal-script-regular text-pink-600 text-sm opacity-70">
+              <p className="petit-formal-script-regular text-pink-600 text-[9px] opacity-70">
                 {formatDate()}
               </p>
-              <div className="mt-6 bg-[#fff4d8] rounded-full p-4 flex items-center gap-3 shadow-lg">
-                <div className="w-10 h-10 bg-[#ffe6a8] rounded-full flex items-center justify-center text-[#3a061c] font-semibold text-base">
+              <div className="mt-3 bg-[#fff4d8] rounded-full p-2 flex items-center gap-2 shadow-lg">
+                <div className="w-6 h-6 bg-[#ffe6a8] rounded-full flex items-center justify-center text-[#3a061c] font-semibold text-[10px]">
                   {weekHours}
                 </div>
-                <span className="text-[#a29166] text-sm">
+                <span className="text-[#a29166] text-[9px]">
                   hours clocked this week
                 </span>
               </div>
@@ -174,7 +174,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="relative overflow-hidden bg-white rounded-3xl p-8 shadow-lg -mb-8 pb-20"
+            className="relative overflow-hidden bg-white rounded-2xl p-4 shadow-lg -mb-6 pb-16"
           >
             <div className="pointer-events-none absolute inset-0">
               <SparklesCore
@@ -188,43 +188,43 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-linear-to-b from-white via-white/70 to-white" />
             </div>
-            <div className="flex items-start justify-between mb-8 relative z-10">
+            <div className="flex items-start justify-between mb-4 relative z-10">
               <div>
-                <p className="text-[#c0c0c0] text-sm mb-2">ur progress</p>
-                <div className="flex items-baseline gap-3">
-                  <h2 className="text-5xl font-semibold text-[#3a061c]">
+                <p className="text-[#c0c0c0] text-[9px] mb-1">ur progress</p>
+                <div className="flex items-baseline gap-2">
+                  <h2 className="text-2xl font-semibold text-[#3a061c]">
                     {totalHours}
                   </h2>
-                  <span className="text-4xl font-semibold text-[#3a061c]">hrs</span>
-                  <span className="text-[#c0c0c0] text-sm ml-3">to date</span>
+                  <span className="text-xl font-semibold text-[#3a061c]">hrs</span>
+                  <span className="text-[#c0c0c0] text-[9px] ml-2">to date</span>
                 </div>
               </div>
               <button
                 onClick={() => router.push('/calendar')}
-                className="p-3 hover:bg-gray-100 rounded-xl transition-colors"
+                className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
               >
                 <Image
                   src="/arrow.svg"
                   alt="view calendar"
                   width={24}
                   height={24}
-                  className="w-7 h-7"
+                  className="w-5 h-5"
                 />
               </button>
             </div>
 
             {/* Log Time Button with gradient border */}
-            <div className="w-full rounded-full p-[3px] bg-linear-to-r from-[#FFBBDF] to-[#EAD7F5] shadow-lg relative z-10">
+            <div className="w-full rounded-full p-[2px] bg-linear-to-r from-[#FFBBDF] to-[#EAD7F5] shadow-lg relative z-10">
               <motion.button
                 type="button"
                 onClick={() => setIsModalOpen(true)}
                 disabled={loading}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-5 rounded-full bg-linear-to-r from-[#FFBBDF] to-[#EAD7F5] text-white font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 petit-formal-script-regular"
+                className="w-full py-3 rounded-full bg-linear-to-r from-[#FFBBDF] to-[#EAD7F5] text-white font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 petit-formal-script-regular"
               >
                 <svg
-                  className="w-7 h-7"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

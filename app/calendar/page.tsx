@@ -169,41 +169,11 @@ export default function CalendarPage() {
             <div className="w-12"></div>
           </motion.div>
 
-          {/* Date Range Picker */}
+          {/* View Toggle */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="bg-white/80 backdrop-blur-sm rounded-xl p-2 mb-3 shadow-sm"
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <label className="text-[9px] text-[#a29166] font-medium flex-1">
-                start date
-              </label>
-              <input
-                type="date"
-                value={startDateRange}
-                onChange={(e) => setStartDateRange(e.target.value)}
-                className="flex-1 text-[10px] px-2 py-1 rounded-lg border border-[#a29166]/30 bg-white/60 text-[#3a061c] focus:outline-none focus:ring-1 focus:ring-[#a29166]"
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <label className="text-[9px] text-[#a29166] font-medium flex-1">
-                end date
-              </label>
-              <input
-                type="date"
-                value={endDateRange}
-                onChange={(e) => setEndDateRange(e.target.value)}
-                className="flex-1 text-[10px] px-2 py-1 rounded-lg border border-[#a29166]/30 bg-white/60 text-[#3a061c] focus:outline-none focus:ring-1 focus:ring-[#a29166]"
-              />
-            </div>
-          </motion.div>
-
-          {/* View Toggle and Total */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex items-center justify-between mb-3"
+            className="flex items-center justify-center mb-3"
           >
             <div className="flex gap-1 bg-white/80 backdrop-blur-sm rounded-lg p-1 shadow-sm">
               <motion.button
@@ -230,12 +200,6 @@ export default function CalendarPage() {
               >
                 list
               </motion.button>
-            </div>
-            <div className="text-center">
-              <p className="text-[#a29166] text-[9px] mb-0.5">total</p>
-              <p className="text-base font-semibold text-[#3a061c]">
-                {Math.round(totalRangeHours * 10) / 10} hrs
-              </p>
             </div>
           </motion.div>
 
@@ -430,6 +394,55 @@ export default function CalendarPage() {
               )}
             </motion.div>
           )}
+
+          {/* Date Range Picker and Total */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-3 space-y-2"
+          >
+            {/* Date Range Picker */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="bg-white/80 backdrop-blur-sm rounded-xl p-2 shadow-sm"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <label className="text-[9px] text-[#a29166] font-medium flex-1">
+                  start date
+                </label>
+                <input
+                  type="date"
+                  value={startDateRange}
+                  onChange={(e) => setStartDateRange(e.target.value)}
+                  className="flex-1 text-[10px] px-2 py-1 rounded-lg border border-[#a29166]/30 bg-white/60 text-[#3a061c] focus:outline-none focus:ring-1 focus:ring-[#a29166]"
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <label className="text-[9px] text-[#a29166] font-medium flex-1">
+                  end date
+                </label>
+                <input
+                  type="date"
+                  value={endDateRange}
+                  onChange={(e) => setEndDateRange(e.target.value)}
+                  className="flex-1 text-[10px] px-2 py-1 rounded-lg border border-[#a29166]/30 bg-white/60 text-[#3a061c] focus:outline-none focus:ring-1 focus:ring-[#a29166]"
+                />
+              </div>
+            </motion.div>
+
+            {/* Total Hours */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="bg-white/80 backdrop-blur-sm rounded-xl p-2 shadow-sm text-center"
+            >
+              <p className="text-[#a29166] text-[9px] mb-0.5">total</p>
+              <p className="text-base font-semibold text-[#3a061c]">
+                {Math.round(totalRangeHours * 10) / 10} hrs
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Day Details Modal */}

@@ -40,8 +40,8 @@ export default function DailyQuote() {
 
   if (!quote) {
     return (
-      <div className="p-8 mb-6">
-        <div className="text-[#c0c0c0] text-left text-base">loading quote...</div>
+      <div className="p-3 mb-3">
+        <div className="text-[#c0c0c0] text-left text-[10px]">loading quote...</div>
       </div>
     );
   }
@@ -51,7 +51,7 @@ export default function DailyQuote() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="p-8 mb-6 relative"
+      className="p-3 mb-3 relative"
     >
       {/* Spinning image on the right, half cut off, behind all layers */}
       <motion.div
@@ -72,11 +72,11 @@ export default function DailyQuote() {
         />
       </motion.div>
 
-      <div className="relative z-10 pr-16">
-        <p className="petit-formal-script-regular italic text-[#3a061c] text-left mb-6 text-lg leading-relaxed">
+      <div className="relative z-10 pr-12">
+        <p className="petit-formal-script-regular italic text-[#3a061c] text-left mb-3 text-sm leading-relaxed">
           "{quote.quote}"
         </p>
-        <div className="flex justify-start items-center gap-3">
+        <div className="flex justify-start items-center gap-2">
           {[1, 2, 3, 4, 5].map((star) => (
             <motion.button
               key={star}
@@ -90,9 +90,9 @@ export default function DailyQuote() {
               whileTap={{ scale: 0.9 }}
               className="focus:outline-none"
             >
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md">
+              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md">
                 <svg
-                  className="w-5 h-5"
+                  className="w-3 h-3"
                   fill={rating >= star ? '#ffe6a8' : 'none'}
                   stroke={rating >= star ? '#ffe6a8' : '#c0c0c0'}
                   viewBox="0 0 24 24"

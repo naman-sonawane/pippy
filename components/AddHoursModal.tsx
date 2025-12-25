@@ -112,18 +112,18 @@ export default function AddHoursModal({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden"
+              className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
             >
               {/* Header */}
-              <div className="bg-gradient-to-r from-[#FFBBDF] to-[#EAD7F5] p-6">
+              <div className="bg-gradient-to-r from-[#FFBBDF] to-[#EAD7F5] p-3">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-[#3a061c] petit-formal-script-regular">log hours</h2>
+                  <h2 className="text-lg font-bold text-[#3a061c] petit-formal-script-regular">log hours</h2>
                   <button
                     onClick={onClose}
-                    className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors"
+                    className="w-6 h-6 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors"
                   >
                     <svg
-                      className="w-5 h-5 text-[#3a061c]"
+                      className="w-4 h-4 text-[#3a061c]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -140,14 +140,14 @@ export default function AddHoursModal({
               </div>
 
               {/* Content */}
-              <form onSubmit={handleSubmit} className="p-6">
-                <div className="mb-6">
+              <form onSubmit={handleSubmit} className="p-3">
+                <div className="mb-3">
                   {/* Activity Selection */}
-                  <div className="mb-6">
-                    <label className="block text-[#3a061c] text-sm font-medium mb-3">
+                  <div className="mb-3">
+                    <label className="block text-[#3a061c] text-[10px] font-medium mb-2">
                       activity?
                     </label>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {activities.map((act) => (
                         <motion.button
                           key={act.id}
@@ -161,7 +161,7 @@ export default function AddHoursModal({
                           }}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                          className={`px-3 py-1.5 rounded-full text-[10px] font-medium transition-colors ${
                             activity === act.id
                               ? 'bg-gradient-to-r from-[#FFBBDF] to-[#EAD7F5] text-[#3a061c]'
                               : 'bg-gray-100 text-[#3a061c] hover:bg-gray-200'
@@ -175,7 +175,7 @@ export default function AddHoursModal({
                       <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mt-3"
+                        className="mt-2"
                       >
                         <input
                           type="text"
@@ -185,22 +185,22 @@ export default function AddHoursModal({
                             setError('');
                           }}
                           placeholder="enter activity"
-                          className="w-full px-4 py-3 text-sm text-[#3a061c] border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-[#FFBBDF] transition-colors"
+                          className="w-full px-3 py-2 text-[10px] text-[#3a061c] border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#FFBBDF] transition-colors"
                         />
                       </motion.div>
                     )}
                   </div>
 
                   {/* Date Selection */}
-                  <div className="mb-6">
-                    <label className="block text-[#3a061c] text-sm font-medium mb-3">
+                  <div className="mb-3">
+                    <label className="block text-[#3a061c] text-[10px] font-medium mb-2">
                       date
                     </label>
                     {!isDateEditing ? (
                       <button
                         type="button"
                         onClick={() => setIsDateEditing(true)}
-                        className="w-full px-4 py-3 rounded-2xl border-2 border-gray-200 text-left text-sm text-[#3a061c] bg-white hover:border-[#FFBBDF] transition-colors"
+                        className="w-full px-3 py-2 rounded-xl border-2 border-gray-200 text-left text-[10px] text-[#3a061c] bg-white hover:border-[#FFBBDF] transition-colors"
                       >
                         today
                       </button>
@@ -212,17 +212,17 @@ export default function AddHoursModal({
                           setDateInput(e.target.value);
                           setError('');
                         }}
-                        className="w-full px-4 py-3 rounded-2xl border-2 border-gray-200 text-sm text-[#3a061c] focus:outline-none focus:border-[#FFBBDF] transition-colors"
+                        className="w-full px-3 py-2 rounded-xl border-2 border-gray-200 text-[10px] text-[#3a061c] focus:outline-none focus:border-[#FFBBDF] transition-colors"
                       />
                     )}
                   </div>
 
-                  <label className="block text-[#3a061c] text-sm font-medium mb-3">
+                  <label className="block text-[#3a061c] text-[10px] font-medium mb-2">
                     time?
                   </label>
                   
                   {/* Hours and Minutes Inputs */}
-                  <div className="flex gap-3 mb-4">
+                  <div className="flex gap-2 mb-3">
                     <div className="flex-1 relative">
                       <input
                         type="number"
@@ -234,10 +234,10 @@ export default function AddHoursModal({
                           setError('');
                         }}
                         placeholder="0"
-                        className="w-full px-4 py-4 text-2xl font-semibold text-[#3a061c] border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-[#FFBBDF] transition-colors"
+                        className="w-full px-3 py-2.5 text-lg font-semibold text-[#3a061c] border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#FFBBDF] transition-colors"
                         autoFocus
                       />
-                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#c0c0c0] text-lg">
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[#c0c0c0] text-xs">
                         hrs
                       </span>
                     </div>
@@ -253,18 +253,18 @@ export default function AddHoursModal({
                           setError('');
                         }}
                         placeholder="0"
-                        className="w-full px-4 py-4 text-2xl font-semibold text-[#3a061c] border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-[#FFBBDF] transition-colors"
+                        className="w-full px-3 py-2.5 text-lg font-semibold text-[#3a061c] border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#FFBBDF] transition-colors"
                       />
-                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#c0c0c0] text-lg">
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[#c0c0c0] text-xs">
                         mins
                       </span>
                     </div>
                   </div>
 
                   {/* Quick select buttons */}
-                  <div className="mb-4">
-                    <p className="text-xs text-[#c0c0c0] mb-2">quick select:</p>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="mb-3">
+                    <p className="text-[9px] text-[#c0c0c0] mb-1.5">quick select:</p>
+                    <div className="flex flex-wrap gap-1.5">
                       {quickHours.map((decimalHour) => {
                         const { hours, minutes } = convertDecimalToHoursMinutes(decimalHour);
                         const currentDecimal = getCurrentDecimalHours();
@@ -283,7 +283,7 @@ export default function AddHoursModal({
                             }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                            className={`px-3 py-1.5 rounded-full text-[10px] font-medium transition-colors ${
                               isSelected
                                 ? 'bg-gradient-to-r from-[#FFBBDF] to-[#EAD7F5] text-[#3a061c]'
                                 : 'bg-gray-100 text-[#3a061c] hover:bg-gray-200'
@@ -300,7 +300,7 @@ export default function AddHoursModal({
                     <motion.p
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-red-400 text-sm mt-2"
+                      className="text-red-400 text-[10px] mt-1.5"
                     >
                       {error}
                     </motion.p>
@@ -308,16 +308,16 @@ export default function AddHoursModal({
                 </div>
 
                 {/* Buttons */}
-                <div className="flex gap-3">
+                <div className="flex gap-2">
                   <motion.button
                     type="button"
                     onClick={onClose}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex-1 py-3 px-4 rounded-2xl bg-gray-100 text-[#3a061c] font-medium hover:bg-gray-200 transition-colors flex items-center justify-center"
+                    className="flex-1 py-2 px-3 rounded-xl bg-gray-100 text-[#3a061c] font-medium hover:bg-gray-200 transition-colors flex items-center justify-center"
                   >
                     <svg
-                      className="w-6 h-6"
+                      className="w-4 h-4"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -335,11 +335,11 @@ export default function AddHoursModal({
                     disabled={loading || (hoursInput === '' && minutesInput === '')}
                     whileHover={{ scale: loading ? 1 : 1.05 }}
                     whileTap={{ scale: loading ? 1 : 0.95 }}
-                    className="flex-1 py-3 px-4 rounded-2xl bg-gradient-to-r from-[#FFBBDF] to-[#EAD7F5] text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-[#FFBBDF] to-[#EAD7F5] text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                   >
                     {loading ? (
                       <svg
-                        className="animate-spin h-6 w-6"
+                        className="animate-spin h-4 w-4"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -360,7 +360,7 @@ export default function AddHoursModal({
                       </svg>
                     ) : (
                       <svg
-                        className="w-6 h-6"
+                        className="w-4 h-4"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

@@ -73,7 +73,7 @@ export default function LoginPage() {
                 placeholder="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-[#fff4d8] border border-[#ffe6a8] text-[#3a061c] placeholder-[#c0c0c0] focus:outline-none focus:ring-2 focus:ring-[#db8cb6]"
+                className="w-full px-4 py-3 rounded-xl bg-[#fff0f7] border border-[#ff90c2] text-[#3a061c] placeholder-[#c0c0c0] focus:outline-none focus:ring-2 focus:ring-[#ffc5e4]"
                 required
               />
             </div>
@@ -84,7 +84,7 @@ export default function LoginPage() {
                 placeholder="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-[#fff4d8] border border-[#ffe6a8] text-[#3a061c] placeholder-[#c0c0c0] focus:outline-none focus:ring-2 focus:ring-[#db8cb6]"
+                className="w-full px-4 py-3 rounded-xl bg-[#fff0f7] border border-[#ff90c2] text-[#3a061c] placeholder-[#c0c0c0] focus:outline-none focus:ring-2 focus:ring-[#ffc5e4]"
                 required
               />
             </div>
@@ -104,7 +104,7 @@ export default function LoginPage() {
               disabled={loading}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#db8cb6] to-[#ead7f5] text-white font-medium shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#ffb9de] to-[#e1b6f9] text-white font-medium shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'signing in...' : 'sign in'}
             </motion.button>
